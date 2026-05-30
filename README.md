@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LearnTrack — Interview Prep Tracker
 
-## Getting Started
+Track your interview prep across **8 learning pillars**, LeetCode, GitHub, weekly plans, notes, and improvement graphs.
 
-First, run the development server:
+## Features
+
+- **8 Pillars**: DSA, CS Fundamentals, System Design (HLD/LLD/SD), Database Optimization, Concurrency, APIs (gRPC/REST/GraphQL), Resilience & Scale, STAR & Estimation
+- **Topics & notes** per pillar with status and hours
+- **LeetCode auto-sync**: solved count, submissions by difficulty, daily question
+- **GitHub auto-sync**: contributions, stars, repos, activity score
+- **Weekly plan** with goals per pillar
+- **Agent import**: bulk paste structured text to auto-create topics/notes/goals
+- **Composite score** (learning + LeetCode + GitHub)
+- **Improvement graph** over time
+- **Daily LeetCode notifications** (browser notifications)
+
+## Mobile & PWA
+
+- **Responsive layout** — bottom nav, slide-out menu, card views on small screens
+- **Install as app** — open in Chrome/Safari → Share → **Add to Home Screen**
+- On Android you may see an **Install** banner after visiting the site
+- Works offline for cached pages (API calls need network)
+
+## Quick start
 
 ```bash
+cd learning-tracker
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Go to **Settings** → add your LeetCode and GitHub usernames
+2. Click **Refresh Score** on the dashboard
+3. Use **Agent Import** to bulk-add topics, or **8 Pillars** to add manually
+4. Enable notifications on the dashboard for daily LeetCode reminders
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Agent bulk format
 
-## Learn More
+Pipe format (one line per topic):
 
-To learn more about Next.js, take a look at the following resources:
+```
+dsa|Binary Search|in_progress|2|notes here
+api|GraphQL|done|3
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Block format:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+PILLAR: dsa
+TOPIC: Binary Search
+STATUS: in_progress
+HOURS: 2
+---
+```
 
-## Deploy on Vercel
+## Data
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+SQLite database stored in `./data/tracker.db` (local, private).
